@@ -60,3 +60,36 @@ $ redis-cli shutdown
 とする。
 
 その他、`> key *` とすればすべての key を取得できる。`> flushall` ですべてのデータを削除。
+
+# phpredis
+
+インストールは <http://qiita.com/shinkuFencer/items/72f2617fb1db2134e340>
+
+## 基本
+
+`redistest.php` として以下を作成。
+
+```
+<?php
+
+$redis = new Redis();
+$redis->connect("127.0.0.1", 6379);
+
+// set
+$redis->set("foo", "bar");
+
+// get
+$value = $redis->get("foo");
+echo $value;
+
+// delete
+$redis->delete("foo");
+
+?>
+```
+
+シェルで実行するには
+
+```
+$ php redistest.php
+```
